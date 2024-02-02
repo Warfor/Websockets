@@ -1,4 +1,4 @@
-using System.ComponentModel.DataAnnotations;
+/*using System.ComponentModel.DataAnnotations;
 using System.Text.Json;
 using Fleck;
 using lib;
@@ -15,14 +15,16 @@ public class BroadcastToclientsServerdto : BaseDto
 public class BroadcastToclientsServer : BaseEventHandler<BroadcastToclientsServer>
 {
     public override Task Handle(BroadcastToclientsServerDto dto, IWebSocketConnection socket)
+            var broadcast = new ServerBroadcast()
+            {
+                broadcastValue = "broadcasting:" + dto.messageContent
+            };
 }
 /// </summary>
-    var broadcast = new ServerBroadcast()
-    {
-        broadcastValue = "broadcasting:" + dto.messageContent
-    };
+
     
     public class ServerBroadcast : BaseDto
     {
         public string broadcastValue { get; set; }
     }
+*/

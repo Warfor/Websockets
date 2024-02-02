@@ -12,7 +12,7 @@ public class ClientWantsToEchoServerDto : BaseDto
 }
 
 public class ClientWantsToEchoServer : BaseEventHandler<ClientWantsToEchoServerDto>
-
+{
     public override Task Handle(ClientWantsToEchoServerDto dto, IWebSocketConnection socket)
     {
         var echo = new ServerEchosClient()
@@ -24,6 +24,8 @@ public class ClientWantsToEchoServer : BaseEventHandler<ClientWantsToEchoServerD
         return Task.CompletedTask;
     }
 }
+
+
 
 public class ServerEchosClient : BaseDto
 {
