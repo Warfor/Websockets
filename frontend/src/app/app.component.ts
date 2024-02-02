@@ -4,6 +4,9 @@ import { RouterOutlet } from '@angular/router';
 import {FormControl, ReactiveFormsModule} from "@angular/forms";
 import {BaseDto, ServerEchosClientDto} from "../BaseDto";
 
+class ServerBroadcastDto {
+}
+
 @Component({
   selector: 'app-root',
   standalone: true,
@@ -26,10 +29,13 @@ export class AppComponent {
       // @ts-ignore
       this[messageFromServer.eventType].call(this, messageFromServer);
     }
-  }
 
+  }
   ServerEchosClient(dto: ServerEchosClientDto) {
     this.messages.push(dto.echoValue!);
+  }
+  ServerBroadcast(dto: ServerBroadcastDto) {
+    this.messages.push(dto.broadcastValue!);
   }
 
 
