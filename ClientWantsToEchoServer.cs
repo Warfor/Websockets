@@ -24,9 +24,6 @@ public class ClientWantsToEchoServer : BaseEventHandler<ClientWantsToEchoServerD
         return Task.CompletedTask;
     }
 }
-
-
-
 public class ServerEchosClient : BaseDto
 {
     public string echoValue { get; set; }

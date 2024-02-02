@@ -31,13 +31,10 @@ export class AppComponent {
     }
 
   }
+
   ServerEchosClient(dto: ServerEchosClientDto) {
     this.messages.push(dto.echoValue!);
   }
-  ServerBroadcast(dto: ServerBroadcastDto) {
-    this.messages.push(dto.broadcastValue!);
-  }
-
 
   sendMessage() {
     //Post-recording note: If you just make a class and instantiate it, the eventType is automatically assigned
