@@ -6,8 +6,6 @@ export class BaseDto<T> {
     Object.assign(this, init)
   }
 }
-
-
 export class ServerEchosClientDto extends BaseDto<ServerEchosClientDto> {
   echoValue?: string;
 }
