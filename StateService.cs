@@ -10,29 +10,29 @@ public class WsWithMetaData(IWebSocketConnection connection)
 
 public static class StateService
 {
-  public static Dictionary<Guid, WsWithMetaData> Connections = new();
+  public static Dictionary<Guid, WsWithMetaData> OpenConnections = new();
   
-  public static Dictionary<int, HashSet<Guid>> Rooms = new();
+  public static Dictionary<int, HashSet<Guid>> RoomsWithConnections = new();
 
   public static bool AddConnection(IWebSocketConnection ws)
   {
-      return Connections.TryAdd(ws.ConnectionInfo.Id, 
+      return OpenConnections.TryAdd(ws.ConnectionInfo.Id, 
           new WsWithMetaData(ws));
   }
 
   public static bool AddToRoom(IWebSocketConnection ws, int room)
     {
-       if (!Rooms.ContainsKey(room))
-        Rooms.Add(room, new HashSet<Guid>());
-        return Rooms[room].Add(ws.ConnectionInfo.Id);
+       if (!RoomsWithConnections.ContainsKey(room))
+        RoomsWithConnections.Add(room, new HashSet<Guid>());
+        return RoomsWithConnections[room].Add(ws.ConnectionInfo.Id);
   }
 
     public static void BroadcastToRoom(int room, string message)
     {
-   if (Rooms.TryGetValue(room, out var guids))
+   if (RoomsWithConnections.TryGetValue(room, out var guids))
    foreach (var guid in guids)
    {
-       if (Connections.TryGetValue(guid, out var ws))
+       if (OpenConnections.TryGetValue(guid, out var ws))
            ws.Connection.Send(message:message);
    }
     }}

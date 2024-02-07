@@ -19,7 +19,7 @@ public class ClientWantsToBroadcastToRoom : BaseEventHandler<ClientWantsToBroadc
         var message = new ServerBroadcastsMessageWithUsername()
         {
             message = dto.message,
-            username = StateService.Connections[socket.ConnectionInfo.Id].Username
+            username = StateService.OpenConnections[socket.ConnectionInfo.Id].Username
         };
         StateService.BroadcastToRoom(dto.roomId, JsonSerializer.Serialize(message));
         return Task.CompletedTask;

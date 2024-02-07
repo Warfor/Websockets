@@ -12,7 +12,7 @@ public class ClientWantsToSignIn : BaseEventHandler<ClientWantsToSignInDto>
 {
     public override Task Handle(ClientWantsToSignInDto dto, IWebSocketConnection socket)
     {
-        StateService.Connections[socket.ConnectionInfo.Id].Username = dto.Username;
+        StateService.OpenConnections[socket.ConnectionInfo.Id].Username = dto.Username;
         return Task.CompletedTask;
     }
 }
