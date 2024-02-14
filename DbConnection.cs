@@ -13,7 +13,6 @@ public class DbConnection
         var port = uri.Port > 0 ? uri.Port : 5432;
         var connStr = string.Format("Host={0};Username={2};Password={3};Database={1};", uri.Host, db, user,
             passwd, port);
-        Console.WriteLine(connStr);
         return connStr;
     }
 }

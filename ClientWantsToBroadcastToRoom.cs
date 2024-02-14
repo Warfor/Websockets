@@ -24,7 +24,6 @@ public class ClientWantsToBroadcastToRoom : BaseEventHandler<ClientWantsToBroadc
             username = dto.username,
             //username = StateService.OpenConnections[socket.ConnectionInfo.Id].Username
         };
-        Console.WriteLine(message.message);
         StateService.BroadcastToRoom(dto.roomId, JsonSerializer.Serialize(message));
         var dbservice = new DatabaseService();
         dbservice.addMessage(message.message, message.username, dto.roomId);
