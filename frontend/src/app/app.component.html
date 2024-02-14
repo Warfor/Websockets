@@ -1,4 +1,20 @@
-<input [formControl]="messageContent" ><button (click)="sendMessage()"> Click Me</button>
 
+
+<h1>Authenticate</h1>
+<div>
+<input type="username" [formControl]="username" placeholder="username">
+</div>
+<div>
+<input type="password" [formControl]="password" placeholder="password">
+</div>
+
+<button (click)="(signIn())">Sign in</button>
+
+<h1>Enter a room</h1>
+<input type="number" [formControl]="roomIdToEnter">
+<div>
+<button (click)="enterRoom()">Enter room</button>
+</div>
 
 {{messages | json}}
+
