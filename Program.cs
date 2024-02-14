@@ -1,8 +1,7 @@
-
-
 using System.Reflection;
 using Fleck;
 using lib;
+using Npgsql;
 using ws;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -23,11 +22,10 @@ server.Start(ws =>
     ws.OnMessage = async message =>
     {
         // evaluate whether or not message.eventType == 
-            // trigger event handler
+        // trigger event handler
         try
         {
             await app.InvokeClientEventHandler(clientEventHandlers, ws, message);
-
         }
         catch (Exception e)
         {
@@ -39,16 +37,7 @@ server.Start(ws =>
     };
 });
 
+//var dbServer = new NpgsqlConnection(DbConnection.Get());
+//dbServer.Open();
+
 Console.ReadLine();
-
-
-
-
-
-
-
-
-
-
-
-

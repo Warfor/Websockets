@@ -7,7 +7,6 @@ namespace ws;
 
 public class ClientWantsToEchoServerDto : BaseDto
 {
-    
     public string messageContent { get; set; }
 }
 
@@ -24,14 +23,8 @@ public class ClientWantsToEchoServer : BaseEventHandler<ClientWantsToEchoServerD
         return Task.CompletedTask;
     }
 }
+
 public class ServerEchosClient : BaseDto
 {
     public string echoValue { get; set; }
 }
-
-
-
-
-
-
-

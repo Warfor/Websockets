@@ -7,6 +7,7 @@ public class ClientWantsToSignInDto : BaseDto
 {
     public string Username { get; set; }
 }
+
 public class ClientWantsToSignIn : BaseEventHandler<ClientWantsToSignInDto>
 
 {
