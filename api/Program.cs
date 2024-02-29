@@ -1,4 +1,5 @@
 using System.Reflection;
+using System.Text.Json;
 using Fleck;
 using lib;
 using Npgsql;
@@ -38,6 +39,12 @@ public static class Startup
                 }
                 catch (Exception e)
                 {
+                    ws.Send(JsonSerializer.Serialize(new ServerSendsErrorMessageToClient()
+                    {
+                        
+                        errorMessage = e.Message
+                    }));
+                    
                     Console.WriteLine(e.Message);
                     Console.WriteLine(e.InnerException);
                     Console.WriteLine(e.StackTrace);
@@ -49,5 +56,8 @@ public static class Startup
     }
 }
 
-
+public class ServerSendsErrorMessageToClient : BaseDto
+{
+    public string errorMessage { get; set; }
+}
 
